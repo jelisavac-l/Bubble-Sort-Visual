@@ -1,25 +1,14 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "colorprintf.h"
 
 #include "Pillar.hpp"
 
 int main()
 {
-    // float in;
-    // std::cout << "Test Started!\nInsert number in range 1 - 100: ";
-    // std::cin >> in;
-    // std::cout << std::endl;
-
-    // //Check if user is retarded
-    // if(in > 100 || in  < 0)
-    // {
-    //     std::cout << "Call your ophthalmologist you blind ape.\n";
-    //     return -1;
-    // }
-    // float height = 720 * (in / 100);
 
     sf::RenderWindow window(sf::VideoMode(1280, 720), "Sorting algorithm");
-    
+
     float xPos = 0.0f;
     float height = 7.2f;
 
@@ -31,10 +20,16 @@ int main()
         pillarArray[i]->setXCoordinate(xPos);
         xPos += 12.8f;
         height += 7.2f;
-        std::cout << "Pillar created:\nID: " << i << "\nHEIGHT: " << height << "\nX-C: " << xPos << "\n\n";
+        // std::cout << "ID: " << i << " HEIGHT: " << height << " X-C: " << xPos << "\n";
+        colorprintf(1, "Pillar Created!");
+        colorprintf(3, " ID: ");
+        std::cout << i;
+        colorprintf(3, " Height: ");
+        std::cout << height;
+        colorprintf(3, " X-Cord: ");
+        std::cout << xPos << std::endl;
     }
 
-    std::cout << "Successfuly created a pillar wiht the length of ?" << "% of the screen height!\n";
     while (window.isOpen())
     {
         sf::Event event;
@@ -44,9 +39,9 @@ int main()
                 window.close();
         }
 
-        window.clear();
+        window.clear(sf::Color(40, 10, 30));
         // window.draw(stub);
-        for(Pillar* p : pillarArray)
+        for (Pillar *p : pillarArray)
         {
             p->drawPillar(&window);
         }
